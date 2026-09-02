@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: product
+  name: product-fe
   namespace: argocd
 spec:
   sources:
     - repoURL: https://github.com/dkrish194/to-do-list-k8-helm.git
       targetRevision: main
-      path: helm-db
+      path: helm-fe
       helm:
-        releaseName: helm-db-release
+        releaseName: helm-fe-release
   destination:
     server: https://kubernetes.default.svc
     namespace: default

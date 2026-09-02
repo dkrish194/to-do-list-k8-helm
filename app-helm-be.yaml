@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: product-be
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://github.com/dkrish194/to-do-list-k8-helm.git
+      targetRevision: main
+      path: helm-be
+      helm:
+        releaseName: helm-be-release
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  project: default

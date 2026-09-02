@@ -5,7 +5,7 @@ metadata:
   labels:
     app: todo-frontend
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: todo-frontend
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: todo-frontend
-          image: {{ .Values.replicaCount }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}""
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
