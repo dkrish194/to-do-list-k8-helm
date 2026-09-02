@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: todo-frontend
-          image: dkrish194/todo-frontend:v2.0.2
+          image: {{ .Values.replicaCount }}
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
