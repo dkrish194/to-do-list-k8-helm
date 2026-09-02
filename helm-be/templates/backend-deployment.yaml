@@ -5,7 +5,7 @@ metadata:
   labels:
     app: todo-backend
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: todo-backend
@@ -32,7 +32,7 @@ spec:
               echo "mysql is accepting connections"
       containers:
         - name: todo-backend
-          image: dkrish194/todo-backend:v2.0.0
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag}}"
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
