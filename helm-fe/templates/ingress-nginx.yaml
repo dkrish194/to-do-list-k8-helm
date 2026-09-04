@@ -6,10 +6,10 @@ metadata:
     nginx.org/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
-   tls:
-    - hosts:
-      - roboshop.local
-        secretName: roboshop-tls
+  tls:
+  - hosts:
+    - roboshop.local
+    secretName: roboshop-tls
   rules:
     - host: roboshop.local
       http:
