@@ -2,10 +2,16 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: todo-app-nginx
+  annotations:
+    nginx.org/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+   tls:
+    - hosts:
+      - roboshop.local
+        secretName: roboshop-tls
   rules:
-    - host: todo.labserver
+    - host: roboshop.local
       http:
           paths:
             # Only ONE rule - frontend's nginx reverse-proxies /api and
